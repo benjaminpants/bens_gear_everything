@@ -12,6 +12,12 @@ bens_gear.tool_iterates = {}
 bens_gear.ore_iterates = {}
 bens_gear.mine_tool_functions = {}
 
+bens_gear.features = {
+	tool_destroyed_implementation = false
+
+}
+
+
 local groups_to_process = {}
 
 local items_to_ignore = {}
