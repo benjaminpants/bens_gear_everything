@@ -3,7 +3,7 @@ bens_gear.create_blueprint_and_template("shovel","Shovel","bens_gear_outline_sho
 {false,true,false},
 {false,true,false},
 {false,true,false}
-})
+},1)
 
 bens_gear.create_example_item("shovel_head_example","Example Shovel Head", "bens_gear_shovel_metal.png")
 

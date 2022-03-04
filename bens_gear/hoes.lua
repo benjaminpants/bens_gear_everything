@@ -3,7 +3,7 @@ bens_gear.create_blueprint_and_template("hoe","Hoe","bens_gear_outline_hoe.png",
 {true,true,false},
 {false,true,false},
 {false,true,false}
-})
+},2)
 
 bens_gear.create_example_item("hoe_head_example","Example Hoe Head", "bens_gear_hoe_metal.png")
 

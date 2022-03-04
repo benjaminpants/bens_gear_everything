@@ -3,7 +3,7 @@ bens_gear.create_blueprint_and_template("sword","Sword","bens_gear_outline_sword
 {false,true,false},
 {false,true,false},
 {false,"light",false}
-})
+},2)
 
 bens_gear.create_example_item("sword_head_example","Example Sword Blade", "bens_gear_sword_metal.png")
 

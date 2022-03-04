@@ -71,9 +71,9 @@ minetest.register_craft({
 })
 
 
-bens_gear.create_blueprint_and_template = function(tool_type, tool_display, outline_tex, recipe_temp) --helper function for creating templates and blueprints, i got sick of copying and pasting the same code can you blame me
+bens_gear.create_blueprint_and_template = function(tool_type, tool_display, outline_tex, recipe_temp, material_needed) --helper function for creating templates and blueprints, i got sick of copying and pasting the same code can you blame me
 	minetest.register_craftitem("bens_gear:blueprint_" .. tool_type, {
-	description = tool_display .. " Blueprint",
+	description = tool_display .. " Blueprint" .. "\n" .. material_needed .. " material needed.",
 	inventory_image = "(default_paper.png^[multiply:#0000FF)^(" .. outline_tex .. ")"
 	})
 
@@ -137,7 +137,7 @@ bens_gear.create_blueprint_and_template = function(tool_type, tool_display, outl
 
 end
 
-bens_gear.create_blueprint_and_template("rod","Rod","bens_gear_outline_rod.png", nil)
+bens_gear.create_blueprint_and_template("rod","Rod","bens_gear_outline_rod.png", nil, 1)
 
 
 minetest.register_craft({

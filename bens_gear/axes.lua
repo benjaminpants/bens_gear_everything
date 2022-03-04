@@ -3,7 +3,7 @@ bens_gear.create_blueprint_and_template("axe","Axe","bens_gear_outline_axe.png",
 {true,true,false},
 {true,true,false},
 {false,true,false}
-})
+},3)
 
 bens_gear.create_example_item("axe_head_example","Example Axe Head", "bens_gear_axe_metal.png")
 

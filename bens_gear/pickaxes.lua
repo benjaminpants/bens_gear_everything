@@ -3,7 +3,7 @@ bens_gear.create_blueprint_and_template("pickaxe","Pickaxe","bens_gear_outline_p
 {true,true,true},
 {false,true,false},
 {false,true,false}
-})
+},3)
 
 bens_gear.create_example_item("pickaxe_head_example","Example Pickaxe Head", "bens_gear_pick_metal.png")
 
