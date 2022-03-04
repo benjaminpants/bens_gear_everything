@@ -13,7 +13,7 @@ minetest.register_craft({
 		type = "shapeless",
 		output = "bens_gear:hoe_head_example 1",
 		recipe = {
-			"bens_gear:blueprint_hoe", "bens_gear:invalid_material", "bens_gear:invalid_material", "bens_gear:invalid_material"
+			"bens_gear:blueprint_hoe", "bens_gear:invalid_material", "bens_gear:invalid_material"
 		}
 })
 
@@ -21,7 +21,7 @@ minetest.register_craft({
 		type = "shapeless",
 		output = "bens_gear:hoe_head_example 1",
 		recipe = {
-			"bens_gear:template_hoe", "bens_gear:invalid_material", "bens_gear:invalid_material", "bens_gear:invalid_material"
+			"bens_gear:template_hoe", "bens_gear:invalid_material", "bens_gear:invalid_material"
 		}
 })
 
@@ -47,7 +47,7 @@ bens_gear.add_ore_iterate(function(ore_data)
 		type = "shapeless",
 		output = "bens_gear:hoe_head_" .. ore_data.internal_name .. " 1",
 		recipe = {
-			"bens_gear:blueprint_hoe", ore_data.item_name, ore_data.item_name, ore_data.item_name
+			"bens_gear:blueprint_hoe", ore_data.item_name, ore_data.item_name
 		},
 		replacements = {{"bens_gear:blueprint_hoe","bens_gear:blueprint_hoe"}}
 	})
@@ -55,7 +55,7 @@ bens_gear.add_ore_iterate(function(ore_data)
 		type = "shapeless",
 		output = "bens_gear:hoe_head_" .. ore_data.internal_name .. " 1",
 		recipe = {
-			"bens_gear:template_hoe", ore_data.item_name, ore_data.item_name, ore_data.item_name
+			"bens_gear:template_hoe", ore_data.item_name, ore_data.item_name
 		}
 	})
 end)
