@@ -78,7 +78,7 @@ bens_gear.create_blueprint_and_template = function(tool_type, tool_display, outl
 	})
 
 	minetest.register_craftitem("bens_gear:template_" .. tool_type, {
-	description = tool_display .. " Template\n(Can only be used once)" .. material_needed .. " material needed.",
+	description = tool_display .. " Template\n(Can only be used once)\n" .. material_needed .. " material needed.",
 	short_description = tool_display .. " Template",
 	inventory_image = "(default_wood.png)^(bens_gear_frame_overlay.png)^(" .. outline_tex .. "^[multiply:#000000)"
 	})
