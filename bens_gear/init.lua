@@ -12,6 +12,8 @@ bens_gear.tool_iterates = {}
 bens_gear.ore_iterates = {}
 bens_gear.mine_tool_functions = {}
 
+bens_gear.on_all_materials_registered = {}
+
 bens_gear.features = {
 	tool_destroyed_implementation = false
 
@@ -307,6 +309,9 @@ bens_gear.add_ore = function(ore_data)
 	table.insert(bens_gear.ores,ore_data)
 	if (string.sub(ore_data.item_name,1,5) ~= "group") then
 		local find_item = minetest.registered_nodes[ore_data.item_name] or minetest.registered_craftitems[ore_data.item_name] or minetest.registered_items[ore_data.item_name]
+		if (find_item == nil) then
+			return
+		end
 		minetest.override_item(ore_data.item_name,{description=find_item.description .. bens_gear.create_ore_description(ore_data)})
 		table.insert(items_to_ignore,ore_data.item_name)
 	else
@@ -320,6 +325,10 @@ end
 
 bens_gear.add_ore_iterate = function(iterate)
 	table.insert(bens_gear.ore_iterates,iterate)
+end
+
+bens_gear.register_on_all_materials_registered = function(func)
+	table.insert(bens_gear.on_all_materials_registered,func)
 end
 
 
@@ -611,6 +620,9 @@ minetest.register_on_mods_loaded(function()
 		end
 	end
 	groups_to_process = nil
+	for i=1, #bens_gear.on_all_materials_registered do
+		bens_gear.on_all_materials_registered[i]()
+	end
 	for i=1, #bens_gear.ores do
 		for l=1, #bens_gear.ore_iterates do
 			bens_gear.ore_iterates[l](bens_gear.ores[i])
