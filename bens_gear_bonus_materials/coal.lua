@@ -1,3 +1,6 @@
+
+local S = minetest.get_translator()
+
 minetest.register_node("bens_gear_bonus_materials:coal_light_brightest", {
     description = "Coal Light",
 	sunlight_propagates = true,
@@ -61,9 +64,9 @@ minetest.register_node("bens_gear_bonus_materials:coal_light_dim", {
 
 bens_gear.add_ore({
 	internal_name = "default_coal",
-	display_name = "Coal",
+	display_name = S("Coal"),
 	item_name = "group:coal",
-	description_append = "\nEmits a short spark of light whenever a block is mined.",
+	description_append = "\n" .. S("Emits a short spark of light whenever a block is mined."),
 	max_drop_level = 0,
 	damage_groups_any = {fleshy=1},
 	damage_groups_sword = {fleshy=1},

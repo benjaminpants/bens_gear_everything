@@ -1,6 +1,9 @@
+
+local S = minetest.get_translator()
+
 bens_gear.add_rod({
 	internal_name = "default_wooden",
-	display_name = "Wooden Rod",
+	display_name = S("Wooden Rod"),
 	item_name = "group:wood",
 	color = "6C4913",
 	uses_multiplier = 1,
@@ -17,7 +20,7 @@ bens_gear.add_rod({
 
 bens_gear.add_rod({
 	internal_name = "default_stone",
-	display_name = "Stone Rod",
+	display_name = S("Stone Rod"),
 	item_name = "group:stone",
 	color = "635F5D",
 	uses_multiplier = 1.1,
@@ -34,7 +37,7 @@ bens_gear.add_rod({
 
 bens_gear.add_rod({
 	internal_name = "default_steel",
-	display_name = "Steel Rod",
+	display_name = S("Steel Rod"),
 	item_name = "default:steel_ingot",
 	color = "FFFFFF",
 	uses_multiplier = 1.2,
@@ -52,7 +55,7 @@ bens_gear.add_rod({
 
 bens_gear.add_rod({
 	internal_name = "default_obsidian",
-	display_name = "Obsidian Rod",
+	display_name = S("Obsidian Rod"),
 	item_name = "default:obsidian",
 	color = "0F1219",
 	uses_multiplier = 1.6,
@@ -69,7 +72,7 @@ bens_gear.add_rod({
 
 bens_gear.add_rod({
 	internal_name = "default_papyrus",
-	display_name = "Papyrus Rod",
+	display_name = S("Papyrus Rod"),
 	item_name = "default:papyrus",
 	color = "6B972A",
 	uses_multiplier = 0.9,

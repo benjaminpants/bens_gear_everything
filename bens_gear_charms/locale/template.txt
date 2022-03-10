@@ -1,0 +1,15 @@
+# textdomain: bens_gear_charms
+Coal Pickaxe Ends=
+Makes it so a short spark of light appears whenever a block is mined.=
+-2 Uses=
+(Can be applied to pickaxes)=
+Mossy Mese=
+Reduces the time it takes to mine weaker blocks by 25%.=
+Tin Pole=
+Doubles the range of the tool its put on.=
+Increases Mining time by 30%=
+(Can be applied to most tools except for swords)=
+Lumber Bundle=
+Makes it so axes dig all matching nodes above the node dug.=
+Multiplies Mining Time by 2.=
+(Can be applied to axes)=

@@ -1,5 +1,7 @@
 
-bens_gear.create_blueprint_and_template("axe","Axe","bens_gear_outline_axe.png",{
+local S = minetest.get_translator()
+
+bens_gear.create_blueprint_and_template("axe",S("Axe"),"bens_gear_outline_axe.png",{
 {true,true,false},
 {true,true,false},
 {false,true,false}
@@ -39,7 +41,7 @@ minetest.register_craft({
 bens_gear.add_ore_iterate(function(ore_data)
 	local axe_head_texture = bens_gear.get_viable_tool_texture("axe","bens_gear_axe_",ore_data.tool_textures,ore_data.color)
 	minetest.register_craftitem(":bens_gear:axe_head_" .. ore_data.internal_name, {
-	description = ore_data.display_name .. " Axe Head",
+	description = S("@1 Axe Head", ore_data.display_name),
 	inventory_image = axe_head_texture
 	})
 	minetest.register_craft({
@@ -98,8 +100,8 @@ end
 temp_groups["not_in_creative_inventory"] = 1
 
 local axe_data = {
-	description = ore_data.display_name .. " Axe",
-	short_description = ore_data.display_name .. " Axe",
+	description = S("@1 Axe",ore_data.display_name),
+	short_description = S("@1 Axe",ore_data.display_name),
 	inventory_image = "(" .. rod_texture .. ")^" .. "(" .. axe_head_texture .. ")" .. charm_texture,
 	tool_capabilities = {
 		full_punch_interval = (ore_data.full_punch_interval * 1.22) * rod_data.full_punch_interval_multiplier,

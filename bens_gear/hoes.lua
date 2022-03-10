@@ -1,5 +1,7 @@
 
-bens_gear.create_blueprint_and_template("hoe","Hoe","bens_gear_outline_hoe.png",{
+local S = minetest.get_translator()
+
+bens_gear.create_blueprint_and_template("hoe",S("Hoe"),"bens_gear_outline_hoe.png",{
 {true,true,false},
 {false,true,false},
 {false,true,false}
@@ -40,7 +42,7 @@ minetest.register_craft({
 bens_gear.add_ore_iterate(function(ore_data)
 	local pick_head_texture = bens_gear.get_viable_tool_texture("hoe","bens_gear_hoe_",ore_data.tool_textures,ore_data.color)
 	minetest.register_craftitem(":bens_gear:hoe_head_" .. ore_data.internal_name, {
-	description = ore_data.display_name .. " Hoe Head",
+	description = S("@1 Hoe Head", ore_data.display_name),
 	inventory_image = pick_head_texture
 	})
 	minetest.register_craft({
@@ -99,8 +101,8 @@ end
 temp_groups["not_in_creative_inventory"] = 1
 
 local pick_data = {
-	description = ore_data.display_name .. " Hoe",
-	short_description = ore_data.display_name .. " Hoe",
+	description = S("@1 Hoe",ore_data.display_name),
+	short_description = S("@1 Hoe",ore_data.display_name),
 	inventory_image = "(" .. rod_texture .. ")^" .. "(" .. pick_head_texture .. ")" .. charm_texture,
 	uses = math.ceil((ore_data.uses * (ore_data.uses / 3)) * rod_data.uses_multiplier),
 	sound = {breaks = "default_tool_breaks"},

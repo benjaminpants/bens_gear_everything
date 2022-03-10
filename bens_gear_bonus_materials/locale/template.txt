@@ -1,0 +1,4 @@
+# textdomain: bens_gear_bonus_materials
+Coal=
+Obsidian=
+Glass Rod=

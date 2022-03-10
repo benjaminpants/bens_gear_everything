@@ -1,5 +1,8 @@
+
+local S = minetest.get_translator()
+
 minetest.register_craftitem("bens_gear_charms:coal_pick_ends", {
-	description = "Coal Pickaxe Ends\nMakes it so a short spark of light appears whenever a block is mined.\n-2 Uses\n(Can be applied to pickaxes)",
+	description = S("Coal Pickaxe Ends") .. "\n" .. S("Makes it so a short spark of light appears whenever a block is mined.") .. "\n" .. S("-2 Uses") .. "\n" .. S("(Can be applied to pickaxes)"),
 	short_description = "Coal Pickaxe Ends",
 	inventory_image = "bens_gear_charms_coal_ends.png"
 })

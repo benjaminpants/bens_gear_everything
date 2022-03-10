@@ -1,3 +1,6 @@
+
+local S = minetest.get_translator()
+
 bens_gear.reduce_tool_stat("moreores:axe_silver")
 bens_gear.reduce_tool_stat("moreores:pick_silver")
 bens_gear.reduce_tool_stat("moreores:shovel_silver")
@@ -14,7 +17,7 @@ bens_gear.reduce_hoe_stat("moreores:hoe_mithril")
 
 bens_gear.add_ore({
 	internal_name = "moreores_silver",
-	display_name = "Silver",
+	display_name = S("Silver"),
 	item_name = "moreores:silver_ingot",
 	max_drop_level = 3,
 	damage_groups_any = {fleshy=3},
@@ -51,7 +54,7 @@ bens_gear.add_ore({
 
 bens_gear.add_ore({
 	internal_name = "moreores_mithril",
-	display_name = "Mithril",
+	display_name = S("Mithril"),
 	item_name = "moreores:mithril_ingot",
 	max_drop_level = 3,
 	damage_groups_any = {fleshy=5},

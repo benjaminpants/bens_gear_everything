@@ -1,5 +1,7 @@
 
-bens_gear.create_blueprint_and_template("pickaxe","Pickaxe","bens_gear_outline_pickaxe.png",{
+local S = minetest.get_translator()
+
+bens_gear.create_blueprint_and_template("pickaxe",S("Pickaxe"),"bens_gear_outline_pickaxe.png",{
 {true,true,true},
 {false,true,false},
 {false,true,false}
@@ -40,7 +42,7 @@ minetest.register_craft({
 bens_gear.add_ore_iterate(function(ore_data)
 	local pick_head_texture = bens_gear.get_viable_tool_texture("pickaxe","bens_gear_pick_",ore_data.tool_textures,ore_data.color)
 	minetest.register_craftitem(":bens_gear:pickaxe_head_" .. ore_data.internal_name, {
-	description = ore_data.display_name .. " Pickaxe Head",
+	description = S("@1 Pickaxe Head", ore_data.display_name),
 	inventory_image = pick_head_texture
 	})
 	minetest.register_craft({
@@ -99,8 +101,8 @@ end
 temp_groups["not_in_creative_inventory"] = 1
 
 local pick_data = {
-	description = ore_data.display_name .. " Pickaxe",
-	short_description = ore_data.display_name .. " Pickaxe",
+	description = S("@1 Pickaxe",ore_data.display_name),
+	short_description = S("@1 Pickaxe",ore_data.display_name),
 	inventory_image = "(" .. rod_texture .. ")^" .. "(" .. pick_head_texture .. ")" .. charm_texture,
 	tool_capabilities = {
 		full_punch_interval = (ore_data.full_punch_interval * 1.1) * rod_data.full_punch_interval_multiplier,

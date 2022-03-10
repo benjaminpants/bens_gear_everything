@@ -1,6 +1,9 @@
+
+local S = minetest.get_translator()
+
 bens_gear.add_ore({
 	internal_name = "default_stone",
-	display_name = "Stone",
+	display_name = S("Stone"),
 	item_name = "group:stone",
 	max_drop_level = 0,
 	damage_groups_any = {fleshy=1},
@@ -37,7 +40,7 @@ bens_gear.add_ore({
 
 bens_gear.add_ore({
 	internal_name = "default_steel",
-	display_name = "Steel",
+	display_name = S("Steel"),
 	item_name = "default:steel_ingot",
 	max_drop_level = 1,
 	damage_groups_any = {fleshy=2},
@@ -75,7 +78,7 @@ bens_gear.add_ore({
 
 bens_gear.add_ore({
 	internal_name = "default_bronze",
-	display_name = "Bronze",
+	display_name = S("Bronze"),
 	item_name = "default:bronze_ingot",
 	max_drop_level = 1,
 	damage_groups_any = {fleshy=2},
@@ -112,7 +115,7 @@ bens_gear.add_ore({
 
 bens_gear.add_ore({
 	internal_name = "default_diamond",
-	display_name = "Diamond",
+	display_name = S("Diamond"),
 	item_name = "default:diamond",
 	max_drop_level = 3,
 	damage_groups_any = {fleshy=4},
@@ -149,7 +152,7 @@ bens_gear.add_ore({
 
 bens_gear.add_ore({
 	internal_name = "default_mese",
-	display_name = "Mese",
+	display_name = S("Mese"),
 	item_name = "default:mese_crystal",
 	max_drop_level = 3,
 	damage_groups_any = {fleshy=4},

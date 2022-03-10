@@ -1,3 +1,6 @@
+
+local S = minetest.get_translator()
+
 local function mod_loaded(str)
   if minetest.get_modpath(str) ~= nil then
     return true
@@ -9,8 +12,8 @@ end
 local default_path = minetest.get_modpath("bens_gear_charms")
 
 minetest.register_craftitem("bens_gear_charms:mossy_mese_charm", {
-	description = "Mossy Mese\nReduces the time it takes to mine weaker blocks by 25%.\n(Can be applied to pickaxes)",
-	short_description = "Mossy Mese",
+	description = S("Mossy Mese") .. "\n" .. S("Reduces the time it takes to mine weaker blocks by 25%.") .. "\n" .. S("(Can be applied to pickaxes)"),
+	short_description = S("Mossy Mese"),
 	inventory_image = "bens_gear_charms_mossy_mese.png"
 })
 
@@ -41,8 +44,8 @@ bens_gear.add_charm({
 
 
 minetest.register_craftitem("bens_gear_charms:extendo_tin_rod", {
-	description = "Tin Pole\nDoubles the range of the tool its put on.\nIncreases Mining time by 30%\n(Can be applied to most tools except for swords)",
-	short_description = "Tin Pole",
+	description = S("Tin Pole") .. "\n" .. S("Doubles the range of the tool its put on.") .. "\n" .. S("Increases Mining time by 30%") .. "\n" .. S("(Can be applied to most tools except for swords)"),
+	short_description = S("Tin Pole"),
 	inventory_image = "bens_gear_charms_extended_range_item.png"
 })
 
@@ -80,8 +83,8 @@ bens_gear.add_charm({
 
 
 minetest.register_craftitem("bens_gear_charms:lumberjack_charm", {
-	description = "Lumber Bundle\nMakes it so axes dig all matching nodes above the node dug.\nMultiplies Mining Time by 2.\n(Can be applied to axes)",
-	short_description = "Lumber Bundle",
+	description = S("Lumber Bundle") .. "\n" .. S("Makes it so axes dig all matching nodes above the node dug.") .. "\n" .. S("Multiplies Mining Time by 2.") .. "\n" .. S("(Can be applied to axes)"),
+	short_description = S("Lumber Bundle"),
 	inventory_image = "bens_gear_charms_lumberjack_item.png"
 })
 

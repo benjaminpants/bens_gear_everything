@@ -1,5 +1,7 @@
 
-bens_gear.create_blueprint_and_template("shovel","Shovel","bens_gear_outline_shovel.png",{
+local S = minetest.get_translator()
+
+bens_gear.create_blueprint_and_template("shovel",S("Shovel"),"bens_gear_outline_shovel.png",{
 {false,true,false},
 {false,true,false},
 {false,true,false}
@@ -39,7 +41,7 @@ minetest.register_craft({
 bens_gear.add_ore_iterate(function(ore_data)
 	local pick_head_texture = bens_gear.get_viable_tool_texture("shovel","bens_gear_shovel_",ore_data.tool_textures,ore_data.color)
 	minetest.register_craftitem(":bens_gear:shovel_head_" .. ore_data.internal_name, {
-	description = ore_data.display_name .. " Shovel Head",
+	description = S("@1 Shovel Head", ore_data.display_name),
 	inventory_image = pick_head_texture
 	})
 	minetest.register_craft({
@@ -100,8 +102,8 @@ end
 temp_groups["not_in_creative_inventory"] = 1
 
 local pick_data = {
-	description = ore_data.display_name .. " Shovel",
-	short_description = ore_data.display_name .. " Shovel",
+	description = S("@1 Shovel",ore_data.display_name),
+	short_description = S("@1 Shovel",ore_data.display_name),
 	inventory_image = "(" .. rod_texture .. ")^" .. "(" .. pick_head_texture .. ")" .. charm_texture,
 	tool_capabilities = {
 		full_punch_interval = ore_data.full_punch_interval * rod_data.full_punch_interval_multiplier,

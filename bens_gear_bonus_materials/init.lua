@@ -1,8 +1,11 @@
+
+local S = minetest.get_translator()
+
 local default_path = minetest.get_modpath("bens_gear_bonus_materials")
 
 bens_gear.add_ore({
 	internal_name = "default_obsidian",
-	display_name = "Obsidian",
+	display_name = S("Obsidian"),
 	item_name = "default:obsidian",
 	max_drop_level = 3,
 	damage_groups_any = {fleshy=3},
@@ -41,7 +44,7 @@ bens_gear.add_ore({
 
 bens_gear.add_rod({
 	internal_name = "default_glass",
-	display_name = "Glass Rod",
+	display_name = S("Glass Rod"),
 	item_name = "default:glass",
 	color = "DDDDFF",
 	uses_multiplier = 0.20,

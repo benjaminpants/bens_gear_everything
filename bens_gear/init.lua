@@ -1,5 +1,5 @@
 
-local S = default.get_translator
+local S = minetest.get_translator()
 
 bens_gear = {}
 
@@ -29,14 +29,14 @@ local items_to_ignore = {}
 
 
 minetest.register_craftitem("bens_gear:blueprint_paper", {
-	description = "Blueprint Paper",
+	description = S("Blueprint Paper"),
 	inventory_image = "(default_paper.png^[multiply:#0000FF)",
 	groups = {paper=1}
 })
 
 
 minetest.register_craftitem("bens_gear:half_stick", {
-	description = "Short Stick",
+	description = S("Short Stick"),
 	inventory_image = "(bens_gear_short_stick.png)"
 })
 
@@ -50,7 +50,7 @@ minetest.register_craft({
 })
 
 minetest.register_craftitem("bens_gear:blueprint_paper_light", {
-	description = "Light Blueprint Paper",
+	description = S("Light Blueprint Paper"),
 	inventory_image = "(default_paper.png^[multiply:#3333FF)",
 	groups = {paper=1}
 })
@@ -75,13 +75,14 @@ minetest.register_craft({
 
 bens_gear.create_blueprint_and_template = function(tool_type, tool_display, outline_tex, recipe_temp, material_needed) --helper function for creating templates and blueprints, i got sick of copying and pasting the same code can you blame me
 	minetest.register_craftitem("bens_gear:blueprint_" .. tool_type, {
-	description = tool_display .. " Blueprint" .. "\n" .. material_needed .. " material needed.",
+	description = S("@1 Blueprint",tool_display) .. "\n" .. material_needed .. " material needed.",
+	short_description = S("@1 Blueprint",tool_display),
 	inventory_image = "(default_paper.png^[multiply:#0000FF)^(" .. outline_tex .. ")"
 	})
 
 	minetest.register_craftitem("bens_gear:template_" .. tool_type, {
-	description = tool_display .. " Template\n(Can only be used once)\n" .. material_needed .. " material needed.",
-	short_description = tool_display .. " Template",
+	description = S("@1 Template",tool_display) .. "\n" .. S("(Can only be used once)") .. "\n" .. S("@1 material needed.", material_needed),
+	short_description = S("@1 Template",tool_display),
 	inventory_image = "(default_wood.png)^(bens_gear_frame_overlay.png)^(" .. outline_tex .. "^[multiply:#000000)"
 	})
 
@@ -139,7 +140,7 @@ bens_gear.create_blueprint_and_template = function(tool_type, tool_display, outl
 
 end
 
-bens_gear.create_blueprint_and_template("rod","Rod","bens_gear_outline_rod.png", nil, 1)
+bens_gear.create_blueprint_and_template("rod",S("Rod"),"bens_gear_outline_rod.png", nil, 1)
 
 
 minetest.register_craft({
@@ -194,7 +195,7 @@ bens_gear.reduce_tool_stat = function(tool_to_reduce)
 	if (short_desc == nil and (select(1,string.find(registered_tool.description,"\n")) == nil)) then
 		short_desc = registered_tool.description
 	end
-	local desc = registered_tool.description .. "\n(This tool was poorly made and won't last long)"
+	local desc = registered_tool.description .. "\n" .. S("(This tool was poorly made and won't last long)")
 	minetest.override_item(tool_to_reduce,{tool_capabilities=tool_abilities,description=desc,short_description=short_desc})
 end
 
@@ -286,7 +287,7 @@ end
 bens_gear.create_ore_description = function(ore_data)
 	local val = ""
 	val = val .. (ore_data.description_append or "")
-	val = val .. "\nMax Drop Level: " .. ore_data.max_drop_level
+	val = val .. "\n" .. S("Max Drop Level: @1",ore_data.max_drop_level)
 	local av_mining_speed = 0
 	local av_amount = 0
 	for i, thing in pairs(ore_data.groupcaps) do
@@ -294,10 +295,10 @@ bens_gear.create_ore_description = function(ore_data)
 		av_mining_speed = av_mining_speed + bens_gear.calculate_average_group(thing.times)
 	end
 	av_mining_speed = av_mining_speed / av_amount
-	val = val .. "\nAverage Mining Time: " .. round_to_two(av_mining_speed)
-	val = val .. "\nUses: " .. ore_data.uses
-	val = val .. "\nSword Damage: " .. ore_data.damage_groups_sword.fleshy
-	val = val .. "\nAttack Speed: " .. ore_data.full_punch_interval
+	val = val .. "\n" .. S("Average Mining Time: @1", round_to_two(av_mining_speed))
+	val = val .. "\n" .. S("Uses: @1",ore_data.uses)
+	val = val .. "\n" .. S("Sword Damage: @1",ore_data.damage_groups_sword.fleshy)
+	val = val .. "\n" .. S("Attack Speed: @1", ore_data.full_punch_interval)
 	return val
 end
 
@@ -349,13 +350,13 @@ bens_gear.add_tool_generic_description = function(tool_data,ore_data,rod_data,mi
 	local tool_cap_stuff = ""
 	local tool_caps_available = (tool_data.tool_capabilities ~= nil)
 	if (mining ~= nil) then
-		mining_speed = "\nAvg Mining Speed: " .. round_to_two(bens_gear.calculate_average_group(tool_data.tool_capabilities.groupcaps[mining].times))
+		mining_speed = "\n" .. S("Avg Mining Time: @1", round_to_two(bens_gear.calculate_average_group(tool_data.tool_capabilities.groupcaps[mining].times)))
 	end
 	if (tool_caps_available) then
-		tool_cap_stuff = "\nDamage: " .. bens_gear.calculate_average_group(tool_data.tool_capabilities.damage_groups) .. "\nAttack Speed: " .. round_to_two(tool_data.tool_capabilities.full_punch_interval)
+		tool_cap_stuff = "\n" .. S("Damage: @1",bens_gear.calculate_average_group(tool_data.tool_capabilities.damage_groups)) .. "\n" .. S("Attack Speed: @1", round_to_two(tool_data.tool_capabilities.full_punch_interval))
 	end
 	
-	return (ore_data.description_append or "") .. "\nUses: " .. uses .. mining_speed .. tool_cap_stuff
+	return (ore_data.description_append or "") .. "\n" .. S("Uses: @1",uses) .. mining_speed .. tool_cap_stuff
 end
 
 
@@ -368,7 +369,7 @@ bens_gear.add_rod = function(rod_data)
 	local inv_img = bens_gear.add_coloring(rod_data.rod_main_texture,rod_data.color)
 	
 	minetest.register_craftitem(cur_loading_mod .. ":rod_" .. rod_data.internal_name, {
-		description = rod_data.display_name .. "\nUses: " .. rod_data.uses_multiplier .. "x" .. "\nMining Speed: " .. rod_data.speed_multiplier .. "x" .. "\nDamage: " .. rod_data.damage_multiplier .. "x" .. "\nAttack Speed: " .. rod_data.full_punch_interval_multiplier .. "x",
+		description = rod_data.display_name .. "\n" .. S("Uses: @1x",rod_data.uses_multiplier) .. "\n" .. S("Mining Speed: @1x",rod_data.speed_multiplier) .. "\n" .. S("Damage: @1x",rod_data.damage_multiplier) .. "\n" .. S("Attack Speed: @1x",rod_data.full_punch_interval_multiplier),
 		short_description = rod_data.display_name,
 		inventory_image = inv_img
 	})
@@ -397,9 +398,9 @@ end
 
 bens_gear.ore_data_template = {
 	internal_name = "unknown",
-	display_name = "Unknown/Improperly Defined Material",
+	display_name = S("Unknown/Improperly Defined Material"),
 	item_name = "bens_gear:invalid_material",
-	description_append = "\nThis is a test!", -- a string that will be added to the description, this can be omitted
+	description_append = S("\nThis is a test!"), -- a string that will be added to the description, this can be omitted
 	max_drop_level = 1,
 	damage_groups_any = {fleshy=1},
 	damage_groups_sword = {fleshy=2},
@@ -438,7 +439,7 @@ end
 
 bens_gear.rod_data_template = {
 	internal_name = "unknown",
-	display_name = "Unknown Rod",
+	display_name = S("Unknown Rod"),
 	item_name = "bens_gear:invalid_material",
 	color = "FFFFF0",
 	uses_multiplier = 1,

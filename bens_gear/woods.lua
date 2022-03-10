@@ -1,6 +1,9 @@
+
+local S = minetest.get_translator()
+
 bens_gear.add_ore({
 	internal_name = "default_wood",
-	display_name = "Wooden",
+	display_name = S("Wood"),
 	item_name = "group:wood",
 	max_drop_level = 0,
 	damage_groups_any = {fleshy=1},

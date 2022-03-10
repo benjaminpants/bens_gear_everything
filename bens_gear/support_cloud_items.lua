@@ -1,3 +1,6 @@
+
+local S = minetest.get_translator()
+
 bens_gear.reduce_tool_stat("cloud_items:cloud_axe")
 bens_gear.reduce_tool_stat("cloud_items:cloud_pickaxe")
 bens_gear.reduce_tool_stat("cloud_items:cloud_shovel")
@@ -7,7 +10,7 @@ bens_gear.reduce_tool_stat("cloud_items:cloud_sword")
 
 bens_gear.add_ore({
 	internal_name = "cloud_items_cloud",
-	display_name = "Cloud",
+	display_name = S("Cloud"),
 	item_name = "cloud_items:cloud_ingot",
 	max_drop_level = 3,
 	damage_groups_any = {fleshy=4.5},

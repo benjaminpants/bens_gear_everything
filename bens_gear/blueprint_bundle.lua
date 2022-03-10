@@ -4,6 +4,8 @@ It selects 1 random item from each slot.
 Also please only put blueprints in the tables I will shame you if you put anything else in them
 
 ]]
+
+local S = minetest.get_translator()
  
  
 local choosechance = function(weightedlist) --totally not copied from minetest backrooms no why would i ever do that
@@ -42,7 +44,7 @@ bens_gear.blueprint_package.add_tool_type_as_new_slot("bens_gear:blueprint_shove
 bens_gear.blueprint_package.add_tool_type_as_new_slot("bens_gear:blueprint_sword",100)
 
 minetest.register_craftitem("bens_gear:blueprint_package", {
-	description = "Blueprint Package",
+	description = S("Blueprint Package"),
 	inventory_image = "bens_gear_blueprint_bundle.png",
 	on_use = function(itemstack, user, pointed_thing)
 		itemstack:take_item()
