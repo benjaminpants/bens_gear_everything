@@ -135,9 +135,9 @@ bens_gear.add_ore({
 	--"pickaxe"
 	},
 	tool_list_whitelist = false, --if this is true, then tool_list should act like a whitelist, otherwise, it'll act like a blacklist
-	color = "8AEDEB",
+	color = "4BEAE5",
 	tool_textures = {
-		default_alias = "metal", --what to append to the end of the default texture name, example: "bens_gear_axe_" would become "bens_gear_axe_metal"
+		default_alias = "gem", --what to append to the end of the default texture name, example: "bens_gear_axe_" would become "bens_gear_axe_metal"
 		--pickaxe = {"bens_gear_pick_wood.png",true} --use a custom texture for pickaxes, you can add more for other tools
 	},
 	misc_data = {magic=6}, --here you can store various other weird stats for other mods to utilize, the only stat that is officially supported at the moment is "magic"
@@ -174,7 +174,7 @@ bens_gear.add_ore({
 	tool_list_whitelist = false, --if this is true, then tool_list should act like a whitelist, otherwise, it'll act like a blacklist
 	color = "FDFF2D",
 	tool_textures = {
-		default_alias = "metal", --what to append to the end of the default texture name, example: "bens_gear_axe_" would become "bens_gear_axe_metal"
+		default_alias = "gem", --what to append to the end of the default texture name, example: "bens_gear_axe_" would become "bens_gear_axe_metal"
 		--pickaxe = {"bens_gear_pick_wood.png",true} --use a custom texture for pickaxes, you can add more for other tools
 	},
 	misc_data = {magic=10}, --here you can store various other weird stats for other mods to utilize, the only stat that is officially supported at the moment is "magic"
