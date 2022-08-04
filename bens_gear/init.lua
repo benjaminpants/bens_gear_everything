@@ -189,7 +189,7 @@ bens_gear.reduce_tool_stat = function(tool_to_reduce)
 	local registered_tool = minetest.registered_tools[tool_to_reduce]
 	local tool_abilities = registered_tool.tool_capabilities
 	for i, ab in pairs(tool_abilities.groupcaps) do
-		tool_abilities.groupcaps[i].uses = math.ceil(5 / tool_abilities.groupcaps[i].maxlevel)
+		tool_abilities.groupcaps[i].uses = math.ceil(3 / tool_abilities.groupcaps[i].maxlevel)
 	end
 	local short_desc = registered_tool.short_description
 	if (short_desc == nil and (select(1,string.find(registered_tool.description,"\n")) == nil)) then
