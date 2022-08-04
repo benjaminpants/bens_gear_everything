@@ -462,7 +462,7 @@ bens_gear.charm_data_template = {
 		sword = "bens_gear_question.png"
 	},
 	charm_function = function(tool_type,tool_data,ore_data,rod_data,pick_name)
-		tool_data.description = tool_data.description .. "\nI'm homophobic!!!!"
+		--tool_data.description = tool_data.description .. "\nlol!!!"
 	end
 	
 }
