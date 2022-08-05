@@ -369,7 +369,7 @@ bens_gear.add_rod = function(rod_data)
 	local inv_img = bens_gear.add_coloring(rod_data.rod_main_texture,rod_data.color)
 	
 	minetest.register_craftitem(cur_loading_mod .. ":rod_" .. rod_data.internal_name, {
-		description = rod_data.display_name .. "\n" .. S("Uses: @1x",rod_data.uses_multiplier) .. "\n" .. S("Mining Speed: @1x",rod_data.speed_multiplier) .. "\n" .. S("Damage: @1x",rod_data.damage_multiplier) .. "\n" .. S("Attack Speed: @1x",rod_data.full_punch_interval_multiplier),
+		description = rod_data.display_name .. "\n" .. S("Uses: @1x",rod_data.uses_multiplier) .. "\n" .. S("Mining Time: @1x",rod_data.speed_multiplier) .. "\n" .. S("Damage: @1x",rod_data.damage_multiplier) .. "\n" .. S("Attack Speed: @1x",rod_data.full_punch_interval_multiplier),
 		short_description = rod_data.display_name,
 		inventory_image = inv_img
 	})
@@ -428,9 +428,10 @@ bens_gear.ore_data_template = {
 		node_mined = nil,
 		tool_destroyed = nil,
 		tool_attempt_place = nil,
+		after_use = nil
 	},
 	pre_finalization_function = nil --this function should be called RIGHT BEFORE the tool/item/whatever gets created, so that the material can add its own custom handling/data
-	--it should be called like this: func(tool_id,data)
+	--it should be called like this: func(tool_id,data, item_name)
 }
 
 bens_gear.add_charm = function(charm_data)
@@ -451,7 +452,8 @@ bens_gear.rod_data_template = {
 	rod_textures = {
 		default_alias = "def", --what to append to the end of the default texture name, example: "bens_gear_rod_pick_" would become "bens_gear_rod_pick_def", custom tools might have their own texture varients
 		--pickaxe = {"bens_gear_rod_pick_def",true} --use a custom rod for pickaxes, you can add more for other tools.
-	}
+	},
+	pre_finalization_function = nil -- called right before the ores finalization function gets called
 }
 
 bens_gear.charm_data_template = {
@@ -554,6 +556,19 @@ end
 if (mod_loaded("moreores")) then
 	dofile(default_path .. "/support_moreores.lua")
 end
+
+if (mod_loaded("nether")) then
+	dofile(default_path .. "/support_nether.lua")
+end
+
+if (mod_loaded("ethereal")) then
+	dofile(default_path .. "/support_ethereal.lua")
+end
+
+if (mod_loaded("draconis")) then
+	dofile(default_path .. "/support_dragon.lua")
+end
+
 
 
 local mtg_materials = {"wood","stone","steel","bronze","mese","diamond"}

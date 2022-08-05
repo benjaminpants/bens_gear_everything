@@ -40,6 +40,7 @@ minetest.register_craft({
 
 
 bens_gear.add_ore_iterate(function(ore_data)
+	if (not bens_gear.can_tool_be_made("pickaxe",ore_data)) then return end
 	local pick_head_texture = bens_gear.get_viable_tool_texture("pickaxe","bens_gear_pick_",ore_data.tool_textures,ore_data.color)
 	minetest.register_craftitem(":bens_gear:pickaxe_head_" .. ore_data.internal_name, {
 	description = S("@1 Pickaxe Head", ore_data.display_name),
@@ -100,6 +101,10 @@ end
 
 temp_groups["not_in_creative_inventory"] = 1
 
+temp_groups["beng_o_" .. ore_data.internal_name] = 1
+
+temp_groups["beng_r_" .. rod_data.internal_name] = 1
+
 local pick_data = {
 	description = S("@1 Pickaxe",ore_data.display_name),
 	short_description = S("@1 Pickaxe",ore_data.display_name),
@@ -118,9 +123,15 @@ local pick_data = {
 
 pick_data.tool_capabilities.groupcaps.cracky.uses = math.ceil(ore_data.uses * rod_data.uses_multiplier)
 
+pick_data.after_use = ore_data.additional_functions.after_use
+
 pick_data.on_place = ore_data.additional_functions["tool_attempt_place"]
 
 pick_data.on_node_mine = ore_data.additional_functions["node_mined"]
+
+if (rod_data.pre_finalization_function ~= nil) then
+	rod_data.pre_finalization_function("pickaxe",pick_data,pick_name)
+end
 
 if (ore_data.pre_finalization_function ~= nil) then
 	ore_data.pre_finalization_function("pickaxe",pick_data,pick_name)

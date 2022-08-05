@@ -62,5 +62,64 @@ bens_gear.add_rod({
 	}
 })
 
+local function mod_loaded(str)
+	if minetest.get_modpath(str) ~= nil then
+		return true
+	else
+		return false
+	end
+end
+
+if (mod_loaded("nether")) then
+
+	bens_gear.add_rod({
+		internal_name = "nether_netherrack",
+		display_name = S("Netherrack Rod"),
+		item_name = "nether:rack",
+		color = "4F2929",
+		uses_multiplier = 1,
+		speed_multiplier = 1,
+		damage_multiplier = 1.1,
+		full_punch_interval_multiplier = 0.9,
+		rod_main_texture = {"bens_gear_rod_def.png",true},
+		flammable = false,
+		rod_textures = {
+			default_alias = "def", --what to append to the end of the default texture name, example: "bens_gear_rod_pick_" would become "bens_gear_rod_pick_def", custom tools might have their own texture varients
+			--pickaxe = {"bens_gear_rod_pick_def",true} --use a custom rod for pickaxes, you can add more for other tools.
+		}
+	})
+
+	local glowstone_material = {
+		internal_name = "nether_glowstone",
+		display_name = S("Glowstone Rod"),
+		item_name = "nether:glowstone",
+		color = "F4E7C8",
+		uses_multiplier = 0.8,
+		speed_multiplier = 0.9,
+		damage_multiplier = 1,
+		full_punch_interval_multiplier = 0.8,
+		rod_main_texture = {"bens_gear_bonus_materials_glowstone_stick.png",false},
+		flammable = false,
+		rod_textures = {
+			default_alias = "def", --what to append to the end of the default texture name, example: "bens_gear_rod_pick_" would become "bens_gear_rod_pick_def", custom tools might have their own texture varients
+			pickaxe = {"bens_gear_bonus_materials_glowstone_pick.png",false},
+			axe = {"bens_gear_bonus_materials_glowstone_axe.png",false},
+			shovel = {"bens_gear_bonus_materials_glowstone_shovel.png",false},
+			sword = {"bens_gear_bonus_materials_glowstone_sword.png",false}
+		}
+	}
+
+	if (mod_loaded("wielded_light")) then
+		glowstone_material.display_name = glowstone_material.display_name .. "\n" .. S("Makes tools glow.")
+		wielded_light.register_item_light("bens_gear_bonus_materials:rod_nether_glowstone", 15)
+		glowstone_material.pre_finalization_function = function(tool_id, data, item_name)
+			wielded_light.register_item_light(item_name, 15)
+		end
+	end
+
+	bens_gear.add_rod(glowstone_material)
+
+end
+
 
 dofile(default_path .. "/coal.lua")
